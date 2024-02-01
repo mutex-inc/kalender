@@ -29,7 +29,7 @@ class MonthGrid extends StatelessWidget {
         Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 7; i++)
               Divider(
                 height: thickness,
                 thickness: thickness,

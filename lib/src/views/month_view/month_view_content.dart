@@ -24,7 +24,7 @@ class MonthViewContent<T> extends StatelessWidget {
       child: LayoutBuilder(
         builder: (context, constraints) {
           final horizontalStep = constraints.maxWidth / 7;
-          final verticalStep = constraints.maxHeight / 5;
+          final verticalStep = constraints.maxHeight / 6; 
 
           return SizedBox(
             width: constraints.maxWidth,
