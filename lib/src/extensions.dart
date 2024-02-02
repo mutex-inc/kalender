@@ -39,8 +39,7 @@ extension DateTimeRangeExtensions on DateTimeRange {
   }
 
   /// The center [DateTime] of the [DateTimeRange].
-  DateTime get centerDateTime =>
-      start.add(Duration(days: (dayDifference / 2).floor()));
+  DateTime get centerDateTime => start.add(Duration(days: (dayDifference / 2).floor()));
 
   /// The visible month of the [DateTimeRange].
   DateTime get visibleMonth {
@@ -68,15 +67,15 @@ extension DateTimeExtensions on DateTime {
       firstDayOfWeek >= 1 && firstDayOfWeek <= 7,
       'firstDayOfWeek must be between 1 and 7',
     );
-    return subtract(Duration(days: weekday - firstDayOfWeek)).startOfDay;
+
+    return subtract(Duration(days: (weekday - firstDayOfWeek + 7) % 7)).startOfDay; //weekday - firstDayOfWeek
   }
 
   /// Gets the start of the week.
   DateTime get startOfWeek => startOfWeekWithOffset(1);
 
   /// Gets the end of the week with an offset.
-  DateTime endOfWeekWithOffset(int firstDayOfWeek) =>
-      startOfWeekWithOffset(firstDayOfWeek).add(
+  DateTime endOfWeekWithOffset(int firstDayOfWeek) => startOfWeekWithOffset(firstDayOfWeek).add(
         const Duration(days: 7),
       );
 
@@ -120,8 +119,7 @@ extension DateTimeExtensions on DateTime {
   DateTimeRange get weekRange => weekRangeWithOffset(1);
 
   /// Gets the month range in which the [DateTime] is in.
-  DateTimeRange get monthRange =>
-      DateTimeRange(start: startOfMonth, end: endOfMonth);
+  DateTimeRange get monthRange => DateTimeRange(start: startOfMonth, end: endOfMonth);
 
   /// Gets the year range in which the [DateTime] is in.
   DateTimeRange get yearRange => DateTimeRange(
@@ -130,12 +128,10 @@ extension DateTimeExtensions on DateTime {
       );
 
   /// Checks if the [DateTime] is the same day as the calling object.
-  bool isSameDay(DateTime date) =>
-      year == date.year && month == date.month && day == date.day;
+  bool isSameDay(DateTime date) => year == date.year && month == date.month && day == date.day;
 
   /// Checks if the [DateTime] is within the [DateTimeRange].
-  bool isWithin(DateTimeRange range) =>
-      isAfter(range.start) && isBefore(range.end);
+  bool isWithin(DateTimeRange range) => isAfter(range.start) && isBefore(range.end);
 
   /// Checks if the [DateTime] is today.
   bool get isToday => isSameDay(DateTime.now());
