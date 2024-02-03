@@ -58,7 +58,7 @@ class MonthConfiguration extends MonthViewConfiguration {
     final monthRange = DateTime(
       calendarStart.year,
       calendarStart.month + index,
-    ).monthRange;
+    ).monthRangeFor6Col;
 
     return DateTimeRange(
       start: monthRange.start.startOfWeekWithOffset(firstDayOfWeek),

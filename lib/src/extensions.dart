@@ -68,7 +68,7 @@ extension DateTimeExtensions on DateTime {
       'firstDayOfWeek must be between 1 and 7',
     );
 
-    return subtract(Duration(days: (weekday - firstDayOfWeek + 7) % 7)).startOfDay; //weekday - firstDayOfWeek
+    return subtract(Duration(days: (weekday - firstDayOfWeek + 7) % 7)).startOfDay;
   }
 
   /// Gets the start of the week.
@@ -120,6 +120,12 @@ extension DateTimeExtensions on DateTime {
 
   /// Gets the month range in which the [DateTime] is in.
   DateTimeRange get monthRange => DateTimeRange(start: startOfMonth, end: endOfMonth);
+
+  /// Gets the month range for 6col in which the [DateTime] is in.
+  // This function calculates and returns data for a period of 35 weeks,
+  // taking into account the offset provided by the endOfWeekWithOffset process.
+  DateTimeRange get monthRangeFor6Col =>
+      DateTimeRange(start: startOfMonth, end: startOfMonth.add(const Duration(days: 35)));
 
   /// Gets the year range in which the [DateTime] is in.
   DateTimeRange get yearRange => DateTimeRange(
